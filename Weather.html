@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding:0 ;
+            box-sizing: border-box;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            background-color: rgba(25, 203, 197, 0.478);
+            align-items: center;
+            min-height: 80vh;
+
+        }
+        .container{
+            background: linear-gradient(135deg,#feed00,#5e106e);
+            box-shadow: 0 13px 30px;
+            width:350px;
+            height: auto;
+            border-radius: 20px;
+        }
+        button{
+            min-height: 4vh;
+            width:60px;
+            border-radius: 17px;
+            border: none;  
+            font-size:18px ;   }
+        /*.container input{
+            margin-left: 80px;
+            margin-top:60px;
+            margin-bottom: 280px;
+            width: 180px;
+        }*/
+        .searchbox{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px;
+            gap:10px;
+        }
+        .searchbox input{
+            outline:none;
+            border: none;
+            border-radius: 15px;
+            width:200px;
+            height:30px;
+            font-size: 20px;
+            padding-left: 10px;
+        }
+        .searchbox i  {
+            background: #fff;
+            border-radius:50px;
+            padding: 8px 8px;
+            font-size: 15px;
+        }
+        .pic{
+            display: flex;
+            margin: 20px;
+            flex-direction: column;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .humid{
+            margin-left:40px ;
+            margin-bottom: 40px;
+        }
+        .col{
+            display: flex;
+            gap:10px
+        }
+        .col i{
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="searchbox">
+        <input type="text"  id="inp" value="" placeholder="Enter your city"><button onclick="myFun()">Search</button>
+    </div>
+    <div class="pic">
+        <h2 id="temp"></h2>
+        <h3 id="city"></h3>
+    </div>
+    <div class="humid">
+        <div class="col">
+            <i class="fa-solid fa-droplet"></i>
+            <h3 id="humidity"></h3>
+            <p><h3>Humidity</h3></p>
+        </div>
+    </div>
+</div>
+<script>
+    let city=document.getElementById("city");
+    let type=document.getElementById("type");
+    let per=document.getElementById("per");
+    let temp=document.getElementById("temp");
+    let img=document.getElementById("img");
+    let input=document.getElementById("inp");
+    let api_key="87aaa40d375229559a36289ca0f62bc2";
+    const data = async function(search)
+    {
+        let getData=await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${search}&appid=${api_key}&units=metric`);
+        console.log(getData);
+        let jsonData = await getData.json();
+        console.log(jsonData);
+        console.log(jsonData.name);
+
+        city.innerHTML=jsonData.name;
+        temp.innerHTML=Math.floor(jsonData.main.temp)+" °C";
+        humidity.innerHTML=jsonData.main.humidity;
+
+    }
+    function myFun()
+    {
+        search=input.value;
+    
+        data(search);
+    }
+</script>
+</body>
+</html>
