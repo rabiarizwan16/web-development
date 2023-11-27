@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    @media screen {
+        
+    body{
+        background: linear-gradient(135deg,#feed00,#c329e2);
+    }
+}
+    @media screen {
+        
+    p{
+      font-size: 40px;
+      margin: 200px;
+      height: 100px;
+      width: 800px;
+      margin-left: 500px;
+      border: 2px solid black;
+      border-radius: 15px;
+      background-color:#16a5edcb;
+      box-shadow: 0px 15px 30px;
+      color:black;
+      text-align: center;
+    }
+}
+    @media screen {
+        
+    h1{
+        color:rgb(152, 36, 152);
+        text-align: center;
+        padding-top: 80px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+}
+</style>
+<body>
+    <h1><b>COMING  SOON</b></h1>
+    <p id="timer">00 : 00 : 00</p>
+    <script>
+        var last_date=new Date("Nov 10, 2025 12:0:0:0").getTime();
+        var sec=setInterval(tick,1000)
+        function tick(){
+
+            let current_time=new Date().getTime();
+            let time=last_date-current_time;
+            if (time>0){
+                let days=Math.floor(time%(1000*60*60*24));
+                let hours=Math.floor(time%(1000*60*60*24)/(1000*60*60))
+                let min=Math.floor(time%(1000*60*60)/(1000*60))
+                let second=Math.floor(time%(1000*60)/1000)
+                let final_time=`${hours}: ${min}: ${second}`;
+                document.getElementById("timer").innerText=final_time;
+                //document.getElementById("timer").innerHTML=days + "d : " +hours + "h : " + min +  "m : " + second + "s";
+            }
+            if (time<0)
+            {
+                 clearInterval(sec)
+                document.getElementById("timer").innerHTML="EXPIRED"
+            }
+
+        }
+
+    </script>
+</body>
+</html>
