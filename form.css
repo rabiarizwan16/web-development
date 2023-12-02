@@ -12,6 +12,4 @@ button{
     border-radius: 15px;
     background-color: aquamarine;
     font-size: 18px;
-    position: static;
-    transition: 0.5s;
 }
