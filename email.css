@@ -2,7 +2,8 @@
 body{
     margin-left: 300px ;
     margin-right: 300px;
-    background-color: rgb(249, 193, 126);
+    background:#149463;
+    font-size: medium; ;
 }
 h1{
     text-align: center;
@@ -20,4 +21,15 @@ h1{
         font-size: 14px;
         font-weight: 600;
         color: #fff;
+            margin-left: auto;
         }
+        #statement ,p,a{
+            margin-left: auto;
+        }
+        p{
+            font-size: 30px;
+        }
+        h4{
+            color: red;
+        }
+        
